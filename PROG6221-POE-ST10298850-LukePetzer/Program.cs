@@ -89,4 +89,21 @@ namespace ST10298850_POE
             return ingredients;
         }
 
+        // Method to get steps descriptions from user input
+        private static string[] getStepsDescriptionsFromUser()
+        {
+            Console.WriteLine("Please indicate the number of steps the recipe contains.");
+            int ingredientNoSteps = int.Parse(Console.ReadLine());
+
+            string[] stepsDescriptions = new string[ingredientNoSteps];
+
+            for (int j = 0; j < ingredientNoSteps; j++)
+            {
+                Console.WriteLine($"Please provide a description of step {j + 1}");
+                stepsDescriptions[j] = Console.ReadLine();
+            }
+
+            return stepsDescriptions;
+        }
+
     }
