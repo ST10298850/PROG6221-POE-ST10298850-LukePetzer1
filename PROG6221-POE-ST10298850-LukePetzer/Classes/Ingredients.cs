@@ -23,33 +23,7 @@ namespace ST10298850_POE_LukePetzer.Classes
             this.unitOfMeasurement = unitOfMeasurement;
         }
 
-        // Property for ingredient name
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        // Property for ingredient quantity
-        public double Quantity
-        {
-            get { return quantity; }
-            set { quantity = value; }
-        }
-
-        // Property for ingredient unit of measurement
-        public string UnitOfMeasurement
-        {
-            get { return unitOfMeasurement; }
-            set { unitOfMeasurement = value; }
-        }
-
-        // Property for ingredient scale amount
-        public double ScaleAmount
-        {
-            get { return scaleAmount; }
-            set { scaleAmount = value; }
-        }
+       
 
     }
 }
