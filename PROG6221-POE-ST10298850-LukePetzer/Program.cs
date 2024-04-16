@@ -11,6 +11,7 @@ namespace ST10298850_POE
     {
         // Declare a static instance of the Recipe class
         private static Recipe Recipe = new Recipe();
+        private static string userInputConfirmatio;
 
         // Main method
         static void Main(string[] args)
@@ -31,7 +32,7 @@ namespace ST10298850_POE
             {
                 // Prompt user for choice
                 Console.WriteLine("Please select what option you would like to enter.");
-                Console.WriteLine("\n 0. - To change the recipe scale. \n 1. - To reset the recipe scale back to the orignal. \n 2. Make a new Recipe.\n3. Display recipe \n 4. Exit program.");
+                Console.WriteLine("\n 0. - To change the recipe scale. \n 1. - To reset the recipe scale back to the orignal. \n 2. - Make a new Recipe.\n 3. - Display recipe \n 4. - Exit program.");
                 int switchChoice = int.Parse(Console.ReadLine());
 
                 // Switch statement to handle user choice
@@ -46,7 +47,17 @@ namespace ST10298850_POE
                         DisplayFullRecipe();
                         break;
                     case 2:
-                        Recipe.clearRecipe();
+                    
+                        if (ConfirmRecipeDeletion())
+                        {
+                            Console.WriteLine("Recipe cleared successfully.");
+                            Recipe.SetIngredients(getIngredientFromUser());
+                            Recipe.SetStepsDescriptions(getStepsDescriptionsFromUser());
+                            DisplayFullRecipe();
+                        }
+
+                        break;
+
                         Console.WriteLine("Please enter a name for your recipe.");
                         Recipe.Name = Console.ReadLine();
                         Recipe.SetIngredients(getIngredientFromUser());
@@ -107,6 +118,7 @@ namespace ST10298850_POE
             return stepsDescriptions;
         }
 
+
         // Method to display full recipe
         private static void DisplayFullRecipe()
         {
@@ -132,6 +144,34 @@ namespace ST10298850_POE
 
             Recipe.ResettingOfRecipeScale();
         }
+        private static bool ConfirmRecipeDeletion()
+        {
+            Console.WriteLine("Please confirm you would like to delete the existing recipe.");
+            Console.WriteLine("Please enter 'yes' to confirm or 'no' to cancel.");
+
+            String userInputConfirmation = Console.ReadLine().ToLower();
+
+            if (userInputConfirmation == "yes")
+            {
+                Recipe.clearRecipe();
+                return true;
+            }
+            else if (userInputConfirmation == "no")
+            {
+                Console.WriteLine("Operation cancelled. Recipe not cleared.");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter 'yes' to confirm or 'no' to cancel.");
+                return ConfirmRecipeDeletion(); // Recursively call the method until valid input is provided
+            }
+        }
     }
 
 }
+#region
+/*Troelsen, A.and Japikse, P. 2024. Pro C# 9 with .NET 5
+    New York: Apress.*/
+#endregion
+//------------------------------------EndOfProgram-------------------------------------------------

@@ -82,7 +82,7 @@ namespace ST10298850_POE_LukePetzer.Classes
         {
             String fullRecipeInformation = "";
             fullRecipeInformation += ("\n------Recipe Details:------");
-            fullRecipeInformation += ("\n------" + this.name + ":------");
+            fullRecipeInformation += ("\n" + this.name + ":");
             fullRecipeInformation += ("\n\n------Ingredients:------");
             for (int step = 0; step < NoOfIngredients; step++)
             {
@@ -93,7 +93,7 @@ namespace ST10298850_POE_LukePetzer.Classes
 
             for (int step = 0; step < IngredientNoSteps; step++)
             {
-                fullRecipeInformation += ("\n" + stepsDescriptions[step]);
+                fullRecipeInformation += ("\n" + stepsDescriptions[step]+"\n");
             }
             return fullRecipeInformation;
         }
