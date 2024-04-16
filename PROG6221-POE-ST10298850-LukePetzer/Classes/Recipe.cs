@@ -19,7 +19,34 @@ namespace ST10298850_POE_LukePetzer.Classes
         private int noOfIngredients;
         private int ingredientNoSteps;
 
-        
+        // Property for recipe name
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        // Property for number of ingredients
+        public int NoOfIngredients
+        {
+            get { return noOfIngredients; }
+            set { noOfIngredients = value; }
+        }
+
+        // Property for number of steps
+        public int IngredientNoSteps
+        {
+            get { return ingredientNoSteps; }
+            set { ingredientNoSteps = value; }
+        }
+
+        // Method to set ingredients
+        public void SetIngredients(Ingredient[] ingredients)
+        {
+            this.ingredients = ingredients;
+            this.NoOfIngredients = ingredients.Length; // Set the NoOfIngredients property
+        }
+
 
     }
 }
