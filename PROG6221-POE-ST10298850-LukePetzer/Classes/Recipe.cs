@@ -64,5 +64,31 @@ namespace ST10298850_POE_LukePetzer.Classes
             //}
         }
 
-    }
+
+        // Method to reset recipe scale
+        public void ResettingOfRecipeScale()
+        {
+            scaleAmount = 1;
+        }
+
+
+        // Method to clear recipe
+        public void clearRecipe()
+        {
+            ingredients = null; // Clear the ingredients array
+            stepsDescriptions = null; // Clear the stepsDescriptions array
+        }
+
+        // Method to display full recipe
+        public string DisplayRecipe()
+        {
+            String fullRecipeInformation = "";
+            fullRecipeInformation += ("\n\n------Recipe Details:------");
+            fullRecipeInformation += ("\n" + this.name);
+            fullRecipeInformation += ("\n\n------Ingredients:------");
+            for (int step = 0; step < NoOfIngredients; step++)
+            {
+                fullRecipeInformation += ("\n" + ingredients[step].Name + " - " + ingredients[step].Quantity * scaleAmount + " " + ingredients[step].UnitOfMeasurement);
+            }
+        }
 }
