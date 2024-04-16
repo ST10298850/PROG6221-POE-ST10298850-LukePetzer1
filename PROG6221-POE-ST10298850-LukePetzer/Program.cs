@@ -106,4 +106,31 @@ namespace ST10298850_POE
             return stepsDescriptions;
         }
 
+
+        // Method to display full recipe
+        private static void DisplayFullRecipe()
+        {
+            Console.WriteLine(Recipe.DisplayRecipe());
+        }
+
+        // Method to change recipe size
+        public static void changeRecipeSize()
+        {
+            Console.WriteLine("Please indicate to what scale you would like to change the recipe to?");
+            Console.WriteLine("The options are: half, double or triple.");
+
+            double scaleAmount = double.Parse(Console.ReadLine());
+            Recipe.UpdateRecipeScale(scaleAmount);
+
+            Console.WriteLine($"Recipe scaled by a factor of {scaleAmount}.");
+        }
+
+        // Method to reset recipe scale
+        public static void resettingOfRecipeScale()
+        {
+            Console.WriteLine("Please indicate if you would like to reset the recipe scale to 0.");
+
+            Recipe.ResettingOfRecipeScale();
+        }
     }
+}
