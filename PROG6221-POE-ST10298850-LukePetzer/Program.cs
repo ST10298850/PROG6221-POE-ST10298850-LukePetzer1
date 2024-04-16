@@ -66,4 +66,27 @@ namespace ST10298850_POE
                 if (loopContinue)
                     Console.WriteLine("Please enter a valid choice.");
             }
+        }        // Method to get ingredients from user input
+        private static Ingredient[] getIngredientFromUser()
+        {
+            Console.WriteLine("Please indicate how many ingredients this recipe contains.");
+            int noOfIngredients = int.Parse(Console.ReadLine());
+
+            Ingredient[] ingredients = new Ingredient[noOfIngredients];
+
+            for (int i = 0; i < noOfIngredients; i++)
+            {
+                Console.WriteLine("Please indicate the name of the ingredient.");
+                string ingredientName = Console.ReadLine();
+                Console.WriteLine("Please indicate the quantity of the ingredient.");
+                double ingredientQuantity = double.Parse(Console.ReadLine());
+                Console.WriteLine("Please indicate the unit of measurement of the ingredient.");
+                string ingredientUnitofMeasurement = Console.ReadLine();
+
+                ingredients[i] = new Ingredient(ingredientName, ingredientQuantity, ingredientUnitofMeasurement);
+            }
+
+            return ingredients;
         }
+
+    }
