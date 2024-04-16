@@ -64,13 +64,11 @@ namespace ST10298850_POE_LukePetzer.Classes
             //}
         }
 
-
         // Method to reset recipe scale
         public void ResettingOfRecipeScale()
         {
             scaleAmount = 1;
         }
-
 
         // Method to clear recipe
         public void clearRecipe()
@@ -83,12 +81,22 @@ namespace ST10298850_POE_LukePetzer.Classes
         public string DisplayRecipe()
         {
             String fullRecipeInformation = "";
-            fullRecipeInformation += ("\n\n------Recipe Details:------");
-            fullRecipeInformation += ("\n" + this.name);
+            fullRecipeInformation += ("\n------Recipe Details:------");
+            fullRecipeInformation += ("\n------" + this.name + ":------");
             fullRecipeInformation += ("\n\n------Ingredients:------");
             for (int step = 0; step < NoOfIngredients; step++)
             {
                 fullRecipeInformation += ("\n" + ingredients[step].Name + " - " + ingredients[step].Quantity * scaleAmount + " " + ingredients[step].UnitOfMeasurement);
             }
+
+            fullRecipeInformation += ("\n\n------Recipe Setps:------");
+
+            for (int step = 0; step < IngredientNoSteps; step++)
+            {
+                fullRecipeInformation += ("\n" + stepsDescriptions[step]);
+            }
+            return fullRecipeInformation;
         }
+
+    }
 }

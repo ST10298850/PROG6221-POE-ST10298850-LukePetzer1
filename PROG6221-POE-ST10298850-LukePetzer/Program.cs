@@ -25,7 +25,6 @@ namespace ST10298850_POE
             Recipe.SetStepsDescriptions(getStepsDescriptionsFromUser());
             DisplayFullRecipe();
 
-
             bool loopContinue = true;
             // Loop to continue displaying options until user chooses to exit
             while (loopContinue)
@@ -66,7 +65,9 @@ namespace ST10298850_POE
                 if (loopContinue)
                     Console.WriteLine("Please enter a valid choice.");
             }
-        }        // Method to get ingredients from user input
+        }
+
+        // Method to get ingredients from user input
         private static Ingredient[] getIngredientFromUser()
         {
             Console.WriteLine("Please indicate how many ingredients this recipe contains.");
@@ -106,7 +107,6 @@ namespace ST10298850_POE
             return stepsDescriptions;
         }
 
-
         // Method to display full recipe
         private static void DisplayFullRecipe()
         {
@@ -133,4 +133,5 @@ namespace ST10298850_POE
             Recipe.ResettingOfRecipeScale();
         }
     }
+
 }
