@@ -47,6 +47,22 @@ namespace ST10298850_POE_LukePetzer.Classes
             this.NoOfIngredients = ingredients.Length; // Set the NoOfIngredients property
         }
 
+        // Method to set steps descriptions
+        public void SetStepsDescriptions(string[] stepsDescriptions)
+        {
+            this.stepsDescriptions = stepsDescriptions;
+            this.IngredientNoSteps = stepsDescriptions.Length; // Set the IngredientNoSteps property
+        }
+
+        // Method to update recipe scale
+        public void UpdateRecipeScale(double scaleAmount)
+        {
+            this.scaleAmount = scaleAmount;
+            //foreach (Ingredient ingredient in ingredients)
+            //{
+            //    //ingredient.Quantity *= scaleAmount;
+            //}
+        }
 
     }
 }
