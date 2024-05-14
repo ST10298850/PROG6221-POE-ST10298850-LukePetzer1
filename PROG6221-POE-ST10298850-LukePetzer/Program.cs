@@ -15,7 +15,7 @@ namespace ST10298850_POE
 
         // Main method
         static void Main(string[] args)
-        {
+        { 
             // Welcome message
             Console.WriteLine("Welcome to the Recipe App!");
 
