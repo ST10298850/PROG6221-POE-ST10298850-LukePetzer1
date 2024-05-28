@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using static ST10298850_POE_LukePetzer.Classes.Ingredient;
-using System.Xml.Linq;
 
 namespace ST10298850_POE_LukePetzer.Classes
 {
@@ -44,59 +39,63 @@ namespace ST10298850_POE_LukePetzer.Classes
         public void SetIngredients(Ingredient[] ingredients)
         {
             this.ingredients = ingredients;
-            this.NoOfIngredients = ingredients.Length; // Set the NoOfIngredients property
+            this.NoOfIngredients = ingredients.Length;
         }
 
         // Method to set steps descriptions
         public void SetStepsDescriptions(string[] stepsDescriptions)
         {
             this.stepsDescriptions = stepsDescriptions;
-            this.IngredientNoSteps = stepsDescriptions.Length; // Set the IngredientNoSteps property
+            this.IngredientNoSteps = stepsDescriptions.Length;
         }
 
         // Method to update recipe scale
         public void UpdateRecipeScale(double scaleAmount)
         {
             this.scaleAmount = scaleAmount;
-            //foreach (Ingredient ingredient in ingredients)
-            //{
-            //    //ingredient.Quantity *= scaleAmount;
-            //}
+            foreach (Ingredient ingredient in ingredients)
+            {
+                ingredient.Quantity = ingredient.OriginalQuantity * scaleAmount;
+            }
         }
 
         // Method to reset recipe scale
         public void ResettingOfRecipeScale()
         {
-            scaleAmount = 1;
+            this.scaleAmount = 1;
+            foreach (Ingredient ingredient in ingredients)
+            {
+                ingredient.ResetQuantity();
+            }
         }
 
         // Method to clear recipe
-        public void clearRecipe()
+        public void ClearRecipe()
         {
-            ingredients = null; // Clear the ingredients array
-            stepsDescriptions = null; // Clear the stepsDescriptions array
+            ingredients = null;
+            stepsDescriptions = null;
         }
 
         // Method to display full recipe
         public string DisplayRecipe()
         {
-            String fullRecipeInformation = "";
-            fullRecipeInformation += ("\n------Recipe Details:------");
-            fullRecipeInformation += ("\n" + this.name + ":");
-            fullRecipeInformation += ("\n\n------Ingredients:------");
-            for (int step = 0; step < NoOfIngredients; step++)
+            StringBuilder fullRecipeInformation = new StringBuilder();
+            fullRecipeInformation.Append("\n------Recipe Details:------\n");
+            fullRecipeInformation.Append($"{this.name}:\n\n------Ingredients:------\n");
+
+            for (int i = 0; i < NoOfIngredients; i++)
             {
-                fullRecipeInformation += ("\n" + ingredients[step].Name + " - " + ingredients[step].Quantity * scaleAmount + " " + ingredients[step].UnitOfMeasurement);
+                fullRecipeInformation.Append($"{ingredients[i].Name} - {ingredients[i].Quantity} {ingredients[i].UnitOfMeasurement}\n");
             }
 
-            fullRecipeInformation += ("\n\n------Recipe Setps:------");
+            fullRecipeInformation.Append("\n------Recipe Steps:------\n");
 
-            for (int step = 0; step < IngredientNoSteps; step++)
+            for (int i = 0; i < IngredientNoSteps; i++)
             {
-                fullRecipeInformation += ("\n" + stepsDescriptions[step]+"\n");
+                fullRecipeInformation.Append($"Step {i + 1}: {stepsDescriptions[i]}\n");
             }
-            return fullRecipeInformation;
+            return fullRecipeInformation.ToString();
         }
-
     }
 }
+//------------------------------------EndOfFile-------------------------------------------------

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ST10298850_POE_LukePetzer.Classes
 {
@@ -13,7 +9,7 @@ namespace ST10298850_POE_LukePetzer.Classes
         private string name;
         private double quantity;
         private string unitOfMeasurement;
-        private double scaleAmount;
+        private double originalQuantity;
 
         // Constructor
         public Ingredient(string name, double quantity, string unitOfMeasurement)
@@ -21,6 +17,7 @@ namespace ST10298850_POE_LukePetzer.Classes
             this.name = name;
             this.quantity = quantity;
             this.unitOfMeasurement = unitOfMeasurement;
+            this.originalQuantity = quantity;
         }
 
         // Property for ingredient name
@@ -44,12 +41,17 @@ namespace ST10298850_POE_LukePetzer.Classes
             set { unitOfMeasurement = value; }
         }
 
-        // Property for ingredient scale amount
-        public double ScaleAmount
+        // Property for original ingredient quantity
+        public double OriginalQuantity
         {
-            get { return scaleAmount; }
-            set { scaleAmount = value; }
+            get { return originalQuantity; }
         }
 
+        // Method to reset quantity to the original value
+        public void ResetQuantity()
+        {
+            this.quantity = originalQuantity;
+        }
     }
 }
+//------------------------------------EndOfFile-------------------------------------------------
