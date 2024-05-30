@@ -7,46 +7,46 @@ namespace ST10298850_POE
 {
     class Program
     {
+        // List to store all recipes
         private static List<Recipe> recipes = new List<Recipe>();
 
         static void Main(string[] args)
         {
-            PopulateSampleData();  // Initialize sample data
+            // Initialize sample data
+            PopulateSampleData();
 
+            // Main loop for the menu
             while (true)
             {
                 Console.Clear();
 
+                // Display menu options
                 Console.WriteLine("1. Add a new recipe");
                 Console.WriteLine("2. Display all recipes");
                 Console.WriteLine("3. Select and display a recipe");
                 Console.WriteLine("4. Scale a recipe");
                 Console.WriteLine("5. Reset a recipe scale");
                 Console.WriteLine("6. Information about food groups:");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("7. Exit");
 
                 int choice;
+                // Read and parse user input
                 if (!int.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.WriteLine("Invalid input. Please enter a number.");
                     continue;
                 }
 
+                // Execute corresponding actions based on user choice
                 switch (choice)
                 {
                     case 1:
                         AddNewRecipe();
-                        
+                        Console.ReadLine();
                         break;
                     case 2:
                         DisplayAllRecipes();
                         Console.ReadLine();
-                        //Console.WriteLine("Do you want to select a recipe? (yes/no)");
-                        //string response = Console.ReadLine();
-                        //if (response.ToLower() == "yes")
-                        //{
-                        //    SelectAndDisplayRecipe();
-                        //}
                         break;
                     case 3:
                         DisplayAllRecipeNames();
@@ -68,7 +68,7 @@ namespace ST10298850_POE
                         Console.ReadLine();
                         break;
                     case 7:
-
+                        // Confirm exit
                         Console.WriteLine("Are you sure you want to exit? (yes/no)");
                         string response = Console.ReadLine();
                         if (response.ToLower() == "yes")
@@ -80,11 +80,10 @@ namespace ST10298850_POE
                         Console.WriteLine("Invalid option. Please select a valid option.");
                         break;
                 }
-                //Console.WriteLine("Press any key to continue...");
-                //Console.ReadKey();
             }
         }
 
+        // Method to initialize sample data
         private static void PopulateSampleData()
         {
             var recipe1 = new Recipe("Spaghetti Bolognese");
@@ -114,11 +113,13 @@ namespace ST10298850_POE
             recipes.Add(recipe3);
         }
 
+        // Method to add a new recipe
         public static void AddNewRecipe()
         {
             Console.WriteLine("Enter the name of the recipe:");
             string name = Console.ReadLine();
             Recipe recipe = new Recipe(name);
+            recipe.OnExceededCalories += HandleExceededCalories; // Subscribe to the event
 
             Console.WriteLine("Enter the number of ingredients:");
             recipe.Ingredients.AddRange(GetIngredientsFromUser());
@@ -129,6 +130,7 @@ namespace ST10298850_POE
             recipes.Add(recipe);
         }
 
+        // Method to get ingredients from the user
         private static List<RecipeIngredient> GetIngredientsFromUser()
         {
             List<RecipeIngredient> ingredients = new List<RecipeIngredient>();
@@ -199,6 +201,7 @@ namespace ST10298850_POE
             return ingredients;
         }
 
+        // Method to display information about food groups
         private static void DisplayFoodGroupsInfo()
         {
             Console.WriteLine("Information about food groups:");
@@ -254,6 +257,7 @@ namespace ST10298850_POE
             Console.WriteLine();
         }
 
+        // Method to display all recipe names
         private static void DisplayAllRecipeNames()
         {
             var sortedRecipes = recipes.OrderBy(r => r.Name).ToList();
@@ -266,6 +270,8 @@ namespace ST10298850_POE
                 Console.WriteLine(recipe.Name);
             }
         }
+
+        // Method to get steps from the user
         private static List<String> GetStepsFromUser()
         {
             List<String> steps = new List<String>();
@@ -286,6 +292,7 @@ namespace ST10298850_POE
             return steps;
         }
 
+        // Method to display all recipes
         private static void DisplayAllRecipes()
         {
             var sortedRecipes = recipes.OrderBy(r => r.Name).ToList();
@@ -306,6 +313,7 @@ namespace ST10298850_POE
             }
         }
 
+        // Method to select and display a specific recipe
         private static void SelectAndDisplayRecipe()
         {
             Console.WriteLine("Existing recipes:");
@@ -331,9 +339,9 @@ namespace ST10298850_POE
             }
         }
 
+        // Method to scale a selected recipe
         private static void ScaleSelectedRecipe()
         {
-
             Console.WriteLine("Enter the name of the recipe to scale:");
             string name = Console.ReadLine();
 
@@ -354,6 +362,7 @@ namespace ST10298850_POE
             }
         }
 
+        // Method to reset the scale of a selected recipe
         private static void ResetSelectedRecipeScale()
         {
             Console.WriteLine("Enter the name of the recipe to reset the scale:");
@@ -373,6 +382,7 @@ namespace ST10298850_POE
             }
         }
 
+        // Event handler for exceeded calories event
         private static void HandleExceededCalories(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -382,6 +392,7 @@ namespace ST10298850_POE
         }
     }
 }
+
 //----------------------------------------------------------------------------------------REFERENCES--------------------------------------------------------------------------------------------
 //C# Tutorial (C Sharp). (n.d.). Retrieved May 27, 2024, from https://www.w3schools.com/cs/index.php 
 

@@ -94,7 +94,12 @@ namespace ST10298850_POE_LukePetzer.Classes
                 sb.AppendLine($"{i + 1}. {Steps[i]}");
             }
             sb.AppendLine(new string('-', 20));
-            sb.AppendLine($"Total Calories: {CalculateTotalCalories()}");
+            double totalCalories = CalculateTotalCalories();
+            sb.AppendLine($"Total Calories: {totalCalories}");
+            if (totalCalories > 300)
+            {
+                OnExceededCalories?.Invoke("Warning: Total calories exceed 300!");
+            }
             return sb.ToString();
         }
 
