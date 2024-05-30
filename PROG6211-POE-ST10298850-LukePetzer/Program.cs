@@ -1,9 +1,7 @@
-using ST10298850_POE_LukePetzer.Classes;
+﻿using ST10298850_POE_LukePetzer.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ST10298850_POE_LukePetzer.Classes;
-
 
 namespace ST10298850_POE
 {
@@ -22,6 +20,7 @@ namespace ST10298850_POE
                 Console.WriteLine("3. Select and display a recipe");
                 Console.WriteLine("4. Scale a recipe");
                 Console.WriteLine("5. Reset a recipe scale");
+                Console.WriteLine("6. Information about food groups:");
                 Console.WriteLine("6. Exit");
 
                 int choice;
@@ -35,21 +34,40 @@ namespace ST10298850_POE
                 {
                     case 1:
                         AddNewRecipe();
+                        Console.Clear();
                         break;
                     case 2:
                         DisplayAllRecipes();
+                        Console.Clear();
+                        //Console.WriteLine("Do you want to select a recipe? (yes/no)");
+                        //string response = Console.ReadLine();
+                        //if (response.ToLower() == "yes")
+                        //{
+                        //    SelectAndDisplayRecipe();
+                        //}
                         break;
                     case 3:
+                        DisplayAllRecipeNames();
                         SelectAndDisplayRecipe();
+                        Console.Clear();
                         break;
                     case 4:
+                        DisplayAllRecipeNames();
                         ScaleSelectedRecipe();
+                        Console.Clear();
                         break;
                     case 5:
+                        DisplayAllRecipeNames();
                         ResetSelectedRecipeScale();
+                        Console.Clear();
                         break;
                     case 6:
-                        return;
+                        DisplayFoodGroupsInfo();
+                        Console.Clear();
+                        break;
+                    case 7:
+                        
+                        break;
                 }
             }
         }
@@ -131,7 +149,73 @@ namespace ST10298850_POE
 
             return ingredients;
         }
+        private static void DisplayFoodGroupsInfo()
+        {
+            Console.WriteLine("Information about food groups:");
+            Console.WriteLine();
 
+            Console.WriteLine("1. Starchy Foods:");
+            Console.WriteLine("- Pap");
+            Console.WriteLine("- Samp");
+            Console.WriteLine("- Brown rice");
+            Console.WriteLine("- Potatoes");
+            Console.WriteLine("- Whole wheat bread");
+            Console.WriteLine("- Whole wheat pasta");
+            Console.WriteLine();
+
+            Console.WriteLine("2. Vegetables and Fruits:");
+            Console.WriteLine("- Apple, Pear, Peach, Orange, Mango");
+            Console.WriteLine("- Cabbage, Pumpkin, Carrots, Spinach, Broccoli, Cauliflower, Tomato");
+            Console.WriteLine();
+
+            Console.WriteLine("3. Dry Beans, Peas, Lentils, and Soya:");
+            Console.WriteLine("- Chickpeas");
+            Console.WriteLine("- Kidney beans");
+            Console.WriteLine("- Green peas");
+            Console.WriteLine("- Black beans");
+            Console.WriteLine("- Soy beans");
+            Console.WriteLine("- Split peas");
+            Console.WriteLine();
+
+            Console.WriteLine("4. Chicken, Fish, Meat, and Eggs:");
+            Console.WriteLine("- Skinless chicken");
+            Console.WriteLine("- Lean meat");
+            Console.WriteLine("- Mince");
+            Console.WriteLine("- Canned fish");
+            Console.WriteLine("- Frozen fish");
+            Console.WriteLine();
+
+            Console.WriteLine("5. Milk and Dairy Products:");
+            Console.WriteLine("- Low fat milk");
+            Console.WriteLine("- Cottage cheese");
+            Console.WriteLine("- Plain yoghurt");
+            Console.WriteLine("- Amasi");
+            Console.WriteLine();
+
+            Console.WriteLine("6. Fats and Oils:");
+            Console.WriteLine("- Avocado");
+            Console.WriteLine("- Olive oil");
+            Console.WriteLine("- Nuts and seeds");
+            Console.WriteLine("- Flax seed");
+            Console.WriteLine();
+
+            Console.WriteLine("7. Water:");
+            Console.WriteLine("- Drink 6 to 8 glasses of water daily.");
+            Console.WriteLine();
+        }
+
+        private static void DisplayAllRecipeNames()
+        {
+            var sortedRecipes = recipes.OrderBy(r => r.Name).ToList();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("All recipe names (sorted alphabetically):");
+            Console.ResetColor();
+
+            foreach (var recipe in sortedRecipes)
+            {
+                Console.WriteLine(recipe.Name);
+            }
+        }
         private static List<String> GetStepsFromUser()
         {
             List<String> steps = new List<String>();
@@ -161,7 +245,14 @@ namespace ST10298850_POE
 
             foreach (var recipe in sortedRecipes)
             {
-                Console.WriteLine(recipe.Name);
+                double totalCalories = recipe.Ingredients.Sum(i => i.Calories);
+                if (totalCalories > 300)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                Console.WriteLine(recipe.Display());
+                Console.ResetColor();
+                Console.WriteLine();
             }
         }
 
@@ -192,6 +283,7 @@ namespace ST10298850_POE
 
         private static void ScaleSelectedRecipe()
         {
+
             Console.WriteLine("Enter the name of the recipe to scale:");
             string name = Console.ReadLine();
 
@@ -235,6 +327,7 @@ namespace ST10298850_POE
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
+            Console.WriteLine("High calorie intake can lead to weight gain, high blood pressure, and other health issues. Please consider this when preparing your meals.");
             Console.ResetColor();
         }
     }
