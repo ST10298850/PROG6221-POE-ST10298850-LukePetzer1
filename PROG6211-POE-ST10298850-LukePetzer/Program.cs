@@ -36,11 +36,11 @@ namespace ST10298850_POE
                 {
                     case 1:
                         AddNewRecipe();
-                        Console.Clear();
+                        
                         break;
                     case 2:
                         DisplayAllRecipes();
-                        Console.Clear();
+                        Console.ReadLine();
                         //Console.WriteLine("Do you want to select a recipe? (yes/no)");
                         //string response = Console.ReadLine();
                         //if (response.ToLower() == "yes")
@@ -51,21 +51,21 @@ namespace ST10298850_POE
                     case 3:
                         DisplayAllRecipeNames();
                         SelectAndDisplayRecipe();
-                        Console.Clear();
+                        Console.ReadLine();
                         break;
                     case 4:
                         DisplayAllRecipeNames();
                         ScaleSelectedRecipe();
-                        Console.Clear();
+                        Console.ReadLine();
                         break;
                     case 5:
                         DisplayAllRecipeNames();
                         ResetSelectedRecipeScale();
-                        Console.Clear();
+                        Console.ReadLine();
                         break;
                     case 6:
                         DisplayFoodGroupsInfo();
-                        Console.Clear();
+                        Console.ReadLine();
                         break;
                     case 7:
 
@@ -80,8 +80,8 @@ namespace ST10298850_POE
                         Console.WriteLine("Invalid option. Please select a valid option.");
                         break;
                 }
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
+                //Console.WriteLine("Press any key to continue...");
+                //Console.ReadKey();
             }
         }
 
@@ -154,14 +154,51 @@ namespace ST10298850_POE
                 Console.WriteLine("Calories:");
                 double calories = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Food group:");
-                string foodGroup = Console.ReadLine();
+                Console.WriteLine("Select a food group:");
+                Console.WriteLine("1. Starchy Foods");
+                Console.WriteLine("2. Vegetables and Fruits");
+                Console.WriteLine("3. Dry Beans, Peas, Lentils, and Soya");
+                Console.WriteLine("4. Chicken, Fish, Meat, and Eggs");
+                Console.WriteLine("5. Milk and Dairy Products");
+                Console.WriteLine("6. Fats and Oils");
+                Console.WriteLine("7. Water");
+
+                string foodGroup;
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        foodGroup = "Starchy Foods";
+                        break;
+                    case "2":
+                        foodGroup = "Vegetables and Fruits";
+                        break;
+                    case "3":
+                        foodGroup = "Dry Beans, Peas, Lentils, and Soya";
+                        break;
+                    case "4":
+                        foodGroup = "Chicken, Fish, Meat, and Eggs";
+                        break;
+                    case "5":
+                        foodGroup = "Milk and Dairy Products";
+                        break;
+                    case "6":
+                        foodGroup = "Fats and Oils";
+                        break;
+                    case "7":
+                        foodGroup = "Water";
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Defaulting to 'Starchy Foods'.");
+                        foodGroup = "Starchy Foods";
+                        break;
+                }
 
                 ingredients.Add(new RecipeIngredient(name, quantity, unit, calories, foodGroup));
             }
 
             return ingredients;
         }
+
         private static void DisplayFoodGroupsInfo()
         {
             Console.WriteLine("Information about food groups:");
