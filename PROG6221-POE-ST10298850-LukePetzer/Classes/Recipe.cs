@@ -1,101 +1,170 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Xml.Linq;
+using ST10298850_POE_LukePetzer.Classes;
+
 
 namespace ST10298850_POE_LukePetzer.Classes
 {
     // Class for representing a recipe
+
+    public delegate void ExceededCaloriesHandler(string message);
     internal class Recipe
     {
         // Private fields
-        private string name;
-        private Ingredient[] ingredients;
-        private string[] stepsDescriptions;
+        public string Name { get; set; }
+        public List<RecipeIngredient> Ingredients { get; set; }
+        public List<string> Steps { get; set; }
         private double scaleAmount = 1;
-        private int noOfIngredients;
-        private int ingredientNoSteps;
 
         // Property for recipe name
-        public string Name
+
+
+
+        public Recipe(string name)
         {
-            get { return name; }
-            set { name = value; }
+            Name = name;
+            Ingredients = new List<RecipeIngredient>();
+            Steps = new List<string>();
         }
 
-        // Property for number of ingredients
-        public int NoOfIngredients
+        public void AddIngredient(RecipeIngredient ingredient)
         {
-            get { return noOfIngredients; }
-            set { noOfIngredients = value; }
+            Ingredients.Add(ingredient);
         }
 
-        // Property for number of steps
-        public int IngredientNoSteps
+        public void AddStep(String step)
         {
-            get { return ingredientNoSteps; }
-            set { ingredientNoSteps = value; }
+            Steps.Add(step);
         }
 
-        // Method to set ingredients
-        public void SetIngredients(Ingredient[] ingredients)
+        public void UpdateScale(double scale)
         {
-            this.ingredients = ingredients;
-            this.NoOfIngredients = ingredients.Length;
-        }
-
-        // Method to set steps descriptions
-        public void SetStepsDescriptions(string[] stepsDescriptions)
-        {
-            this.stepsDescriptions = stepsDescriptions;
-            this.IngredientNoSteps = stepsDescriptions.Length;
-        }
-
-        // Method to update recipe scale
-        public void UpdateRecipeScale(double scaleAmount)
-        {
-            this.scaleAmount = scaleAmount;
-            foreach (Ingredient ingredient in ingredients)
+            scaleAmount = scale;
+            foreach (var ingredient in Ingredients)
             {
                 ingredient.Quantity = ingredient.OriginalQuantity * scaleAmount;
             }
         }
-
-        // Method to reset recipe scale
-        public void ResettingOfRecipeScale()
+        public void ResetScale()
         {
-            this.scaleAmount = 1;
-            foreach (Ingredient ingredient in ingredients)
+            foreach (var ingredient in Ingredients)
             {
                 ingredient.ResetQuantity();
             }
+            scaleAmount = 1;
         }
 
-        // Method to clear recipe
-        public void ClearRecipe()
+        public event ExceededCaloriesHandler OnExceededCalories;
+
+        public double CalculateTotalCalories()
         {
-            ingredients = null;
-            stepsDescriptions = null;
+            double totalCalories = Ingredients.Sum(ingredient => ingredient.Calories * ingredient.Quantity / ingredient.OriginalQuantity);
+            if (totalCalories > 300)
+            {
+                OnExceededCalories?.Invoke("Warning: Total calories exceed 300!");
+            }
+            return totalCalories;
         }
 
-        // Method to display full recipe
-        public string DisplayRecipe()
+
+
+
+        public string Display()
         {
-            StringBuilder fullRecipeInformation = new StringBuilder();
-            fullRecipeInformation.Append("\n------Recipe Details:------\n");
-            fullRecipeInformation.Append($"{this.name}:\n\n------Ingredients:------\n");
-
-            for (int i = 0; i < NoOfIngredients; i++)
+            var sb = new StringBuilder();
+            sb.AppendLine($"Recipe: {Name}");
+            sb.AppendLine(new string('-', 20));
+            sb.AppendLine("Ingredients:");
+            foreach (var ingredient in Ingredients)
             {
-                fullRecipeInformation.Append($"{ingredients[i].Name} - {ingredients[i].Quantity} {ingredients[i].UnitOfMeasurement}\n");
+                sb.AppendLine($"{ingredient.Name} - {ingredient.Quantity} {ingredient.Unit} ({ingredient.Calories} calories) [{ingredient.FoodGroup}]");
             }
-
-            fullRecipeInformation.Append("\n------Recipe Steps:------\n");
-
-            for (int i = 0; i < IngredientNoSteps; i++)
+            sb.AppendLine(new string('-', 20));
+            sb.AppendLine("Steps:");
+            for (int i = 0; i < Steps.Count; i++)
             {
-                fullRecipeInformation.Append($"Step {i + 1}: {stepsDescriptions[i]}\n");
+                sb.AppendLine($"{i + 1}. {Steps[i]}");
             }
-            return fullRecipeInformation.ToString();
+            sb.AppendLine(new string('-', 20));
+            sb.AppendLine($"Total Calories: {CalculateTotalCalories()}");
+            return sb.ToString();
         }
+
+
+        // Property for number of ingredients
+
+
+        //// Property for number of steps
+        //public int IngredientNoSteps
+        //{
+        //    get { return ingredientNoSteps; }
+        //    set { ingredientNoSteps = value; }
+        //}
+
+        //// Method to set ingredients
+        //public void SetIngredients(Ingredient[] ingredients)
+        //{
+        //    this.ingredients = ingredients;
+        //    this.NoOfIngredients = ingredients.Length;
+        //}
+
+        //// Method to set steps descriptions
+        //public void SetStepsDescriptions(string[] stepsDescriptions)
+        //{
+        //    this.stepsDescriptions = stepsDescriptions;
+        //    this.IngredientNoSteps = stepsDescriptions.Length;
+        //}
+
+        //// Method to update recipe scale
+        //public void UpdateRecipeScale(double scaleAmount)
+        //{
+        //    this.scaleAmount = scaleAmount;
+        //    foreach (Ingredient ingredient in ingredients)
+        //    {
+        //        ingredient.Quantity = ingredient.OriginalQuantity * scaleAmount;
+        //    }
+        //}
+
+        //// Method to reset recipe scale
+        //public void ResettingOfRecipeScale()
+        //{
+        //    this.scaleAmount = 1;
+        //    foreach (Ingredient ingredient in ingredients)
+        //    {
+        //        ingredient.ResetQuantity();
+        //    }
+        //}
+
+        //// Method to clear recipe
+        //public void ClearRecipe()
+        //{
+        //    ingredients = null;
+        //    stepsDescriptions = null;
+        //}
+
+        //// Method to display full recipe
+        //public string DisplayRecipe()
+        //{
+        //    StringBuilder fullRecipeInformation = new StringBuilder();
+        //    fullRecipeInformation.Append("\n------Recipe Details:------\n");
+        //    fullRecipeInformation.Append($"{this.name}:\n\n------Ingredients:------\n");
+
+        //    for (int i = 0; i < NoOfIngredients; i++)
+        //    {
+        //        fullRecipeInformation.Append($"{ingredients[i].Name} - {ingredients[i].Quantity} {ingredients[i].UnitOfMeasurement}\n");
+        //    }
+
+        //    fullRecipeInformation.Append("\n------Recipe Steps:------\n");
+
+        //    for (int i = 0; i < IngredientNoSteps; i++)
+        //    {
+        //        fullRecipeInformation.Append($"Step {i + 1}: {stepsDescriptions[i]}\n");
+        //    }
+        //    return fullRecipeInformation.ToString();
+        //}
     }
 }
 //------------------------------------EndOfFile-------------------------------------------------

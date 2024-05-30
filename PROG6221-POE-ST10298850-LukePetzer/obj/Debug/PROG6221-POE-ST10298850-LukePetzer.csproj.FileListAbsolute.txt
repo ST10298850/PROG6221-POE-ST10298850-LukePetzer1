@@ -5,10 +5,5 @@ C:\Users\lab_services_student\source\repos\PROG6221-POE-ST10298850-LukePetzer\PR
 C:\Users\lab_services_student\source\repos\PROG6221-POE-ST10298850-LukePetzer\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.csproj.CoreCompileInputs.cache
 C:\Users\lab_services_student\source\repos\PROG6221-POE-ST10298850-LukePetzer\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.exe
 C:\Users\lab_services_student\source\repos\PROG6221-POE-ST10298850-LukePetzer\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.pdb
-\\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\bin\Debug\PROG6221-POE-ST10298850-LukePetzer.exe.config
-\\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\bin\Debug\PROG6221-POE-ST10298850-LukePetzer.exe
-\\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\bin\Debug\PROG6221-POE-ST10298850-LukePetzer.pdb
 \\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.csproj.AssemblyReference.cache
 \\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.csproj.CoreCompileInputs.cache
-\\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.exe
-\\Mac\Home\NetBeansProjects\RunLogin\PROG6221-POE-ST10298850-LukePetzer1\PROG6221-POE-ST10298850-LukePetzer\obj\Debug\PROG6221-POE-ST10298850-LukePetzer.pdb
