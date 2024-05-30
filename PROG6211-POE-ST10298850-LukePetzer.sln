@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG6211-POE-ST10298850-LukePetzer", "PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer.csproj", "{19D7E677-1008-4EE4-8F9A-6EB0357BD175}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest-for-CalorieCount", "UnitTest-for-CalorieCount\UnitTest-for-CalorieCount.csproj", "{923D7371-9C4C-4998-9C7D-CDA5474D5EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{19D7E677-1008-4EE4-8F9A-6EB0357BD175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D7E677-1008-4EE4-8F9A-6EB0357BD175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19D7E677-1008-4EE4-8F9A-6EB0357BD175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{923D7371-9C4C-4998-9C7D-CDA5474D5EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923D7371-9C4C-4998-9C7D-CDA5474D5EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923D7371-9C4C-4998-9C7D-CDA5474D5EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923D7371-9C4C-4998-9C7D-CDA5474D5EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

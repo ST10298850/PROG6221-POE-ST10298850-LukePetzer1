@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Xml.Linq;
-using ST10298850_POE_LukePetzer.Classes;
-
 
 namespace ST10298850_POE_LukePetzer.Classes
 {
-    // Class for representing a recipe
-
     public delegate void ExceededCaloriesHandler(string message);
-    internal class Recipe
+    public class Recipe
     {
-        // Private fields
+        // Make all the members public
         public string Name { get; set; }
         public List<RecipeIngredient> Ingredients { get; set; }
         public List<string> Steps { get; set; }
