@@ -21,7 +21,17 @@ namespace ST10298850_POE_LukePetzer.Classes
 
         // Property for recipe name
 
+        public Recipe(string name, List<RecipeIngredient> ingredients, List<string> steps)
+        {
+            Name = name;
+            Ingredients = ingredients;
+            Steps = steps;
+        }
 
+        public override string ToString()
+        {
+            return Name;
+        }
 
         public Recipe(string name)
         {

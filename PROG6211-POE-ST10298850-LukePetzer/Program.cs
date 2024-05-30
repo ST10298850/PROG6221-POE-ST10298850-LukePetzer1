@@ -15,6 +15,8 @@ namespace ST10298850_POE
 
             while (true)
             {
+                Console.Clear();
+
                 Console.WriteLine("1. Add a new recipe");
                 Console.WriteLine("2. Display all recipes");
                 Console.WriteLine("3. Select and display a recipe");
@@ -66,9 +68,20 @@ namespace ST10298850_POE
                         Console.Clear();
                         break;
                     case 7:
-                        
+
+                        Console.WriteLine("Are you sure you want to exit? (yes/no)");
+                        string response = Console.ReadLine();
+                        if (response.ToLower() == "yes")
+                        {
+                            Environment.Exit(0);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please select a valid option.");
                         break;
                 }
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
 
