@@ -1,0 +1,7 @@
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\bin\Debug\PROG6211-POE-ST10298850-LukePetzer.exe.config
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\bin\Debug\PROG6211-POE-ST10298850-LukePetzer.exe
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\bin\Debug\PROG6211-POE-ST10298850-LukePetzer.pdb
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\obj\Debug\PROG6211-POE-ST10298850-LukePetzer.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\obj\Debug\PROG6211-POE-ST10298850-LukePetzer.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\obj\Debug\PROG6211-POE-ST10298850-LukePetzer.exe
+\\Mac\Home\Desktop\VisualStudioProjects\PROG6211-POE-ST10298850-LukePetzer\PROG6211-POE-ST10298850-LukePetzer\obj\Debug\PROG6211-POE-ST10298850-LukePetzer.pdb
